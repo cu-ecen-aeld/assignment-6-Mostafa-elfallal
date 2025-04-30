@@ -32,7 +32,6 @@ do_deploy () {
 	:
 }
 do_compile () {
-	bbnote "Compiling"
 	oe_runmake
 }
 

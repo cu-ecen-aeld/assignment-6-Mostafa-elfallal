@@ -1,0 +1,21 @@
+set -e
+
+case "$1" in
+    start)
+        echo "loading hello"
+        modprobe hello
+        echo "loading faulty"
+        insmod /lib/modules/$(uname -r)/extra/faulty.ko
+        ;;
+    stop)
+        echo "stopping hello"
+        rmmod  hello
+        echo "stopping faulty"
+        rmmod  faulty
+        ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+esac
+
+exit 0
